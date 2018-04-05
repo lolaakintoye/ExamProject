@@ -1,4 +1,4 @@
-/* CS 342: Project 3: Saving and Restoring Exam and Exam Components
+/* CS 342: Project 4: Developing Applications Using Exam-Related Classes
  * Name: Charlotte Norman
  * NetID: cnorma4
  */
