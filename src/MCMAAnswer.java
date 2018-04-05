@@ -1,6 +1,6 @@
-/* CS 342: Project 3: Saving and Restoring Exam and Exam Components
- * Name: Charlotte Norman
- * NetID: cnorma4
+/* CS 342: Project 4: Developing Applications Using Exam-Related Classes
+ * Name: Funmilola Akintoye
+ * NetID: fakint3
  */
 
 import java.util.*;
