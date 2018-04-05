@@ -1,6 +1,6 @@
-/* CS 342: Project 3: Saving and Restoring Exam and Exam Components
- * Name: Charlotte Norman
- * NetID: cnorma4
+/* CS 342: Project 4: Developing Applications Using Exam-Related Classes
+ * Name: Funmilola Akintoye
+ * NetID: fakint3
  */
 
 import java.io.*;
@@ -113,7 +113,7 @@ public class MCMAQuestion extends MCQuestion {
 		}
 	}
 	
-	public void saveStudentAnswer(PrintWriter pw) {
+	public void saveStudentAnswers(PrintWriter pw) {
 		pw.println("MCMAAnswer");
 		
 		pw.println(numStudentAnswers);
@@ -123,7 +123,7 @@ public class MCMAQuestion extends MCQuestion {
 		}
 	}
 	
-	public void restoreStudentAnswer(Scanner scn) {
+	public void restoreStudentAnswers(Scanner scn) {
 		MCMAAnswer ansObj; // MCMAAnswer Object
 		String answerLine; // Line containing answer information.
 		String[] answerLineArr; // Line from above split into an array.
