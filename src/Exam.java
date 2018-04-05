@@ -1,4 +1,4 @@
-/* CS 342: Project 3: Saving and Restoring Exam and Exam Components
+/* CS 342: Project 4: Developing Applications Using Exam-Related Classes
  * Name: Charlotte Norman
  * NetID: cnorma4
  */
@@ -6,6 +6,7 @@
 import java.io.*;
 import java.util.*;
 import java.text.*;
+import java.time.*;
 
 public class Exam
 {
@@ -155,7 +156,10 @@ public class Exam
 	}
 	
 	public void save(PrintWriter pw) {
+		Date currentDate = new Date();
+		
 		pw.println(title);
+		pw.println(currentDate.toString());
 		
 		for (Question q: questions) {
 			pw.println("");
@@ -164,10 +168,14 @@ public class Exam
 	}
 	
 	public void saveStudentAnswers(PrintWriter pw) {
+		Date currentDate = new Date();
+		
 		Scanner scn = ScannerFactory.getKeyboardScanner(); // The shared System.in scanner.
+		pw.println(currentDate.toString());
 		
 		System.out.print("\nWhat is your name? ");
 		pw.println(scn.nextLine());
+		pw.println(title);
 		
 		for (Question q: questions) {
 			pw.println("");
