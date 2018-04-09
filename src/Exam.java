@@ -69,7 +69,7 @@ public class Exam
 			}				
 		}
 			
-		System.out.println("\n\n" + numQuestions + " questions has been added to the exam.\n");	
+		//System.out.println("\n\n" + numQuestions + " questions has been added to the exam.\n");
 	}
 	
 	public void print() {	
