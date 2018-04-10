@@ -45,7 +45,7 @@ public class MCSAQuestion extends MCQuestion {
 		
 		print(); // Prints the question and multiple choice answers.
 		
-		System.out.print("Enter your answer choice: ");
+		System.out.print("Enter your answer choice or SKIP to come back: ");
 		ansChoice = scn.nextLine().toUpperCase().charAt(0); // Just gets the first single character (as a char) entered.  This is the multiple choice answer choice e.g. A - E, etc.
 		ansPosition = ansChoice - 'A'; // This will convert that char into an int that will be used to look up the answer object in the array.
 		

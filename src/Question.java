@@ -42,7 +42,7 @@ abstract class Question
 	
 	abstract public void save(PrintWriter pw); // Saves the relevant question information to an external file.
 	
-	public void saveStudentAnswer(PrintWriter pw) {
+	public void saveStudentAnswers(PrintWriter pw) {
 		
 		switch(questionType) {
 			case "SAQuestion":

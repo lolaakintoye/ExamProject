@@ -67,7 +67,7 @@ public class MCMAQuestion extends MCQuestion {
 		
 		print(); // Prints the question and multiple choice answers.
 		
-		System.out.print("Enter your answer choice(s): ");
+		System.out.print("Enter your answer choice(s) or SKIP to come back: ");
 		
 		ansChoices = scn.nextLine().toUpperCase().replaceAll("\\s", ""); // Gets rid of all whitespace before parsing the answers into the array.
 		ansChoicesArr = ansChoices.toCharArray();

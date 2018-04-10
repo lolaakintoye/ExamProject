@@ -1,79 +1,98 @@
 import java.io.*;
 import java.util.*;
 
-public class ExamTaker {
-	public static void main(String[]args){
-		System.out.println("Name: Funmilola Akintoye");
-		System.out.println("netID: fakint3");
-		System.out.println("Partners: Daisy Arellano, Charlotte Norman");
-		System.out.println();
+public class ExamTaker
+{
+	public static Scanner getExamFileScanner() { // Gets the file used to create an exam.
+		Scanner scanUserInput = ScannerFactory.getKeyboardScanner(); // For user input.
+		Scanner scanFile; // Reads the exam file that will contain the exam contents.
+		String examFileName; // The filename of the exam file.
+		File examFile; // The actual file object of the exam.
 
-		//UNCOMMENT FOR USER TO GIVE FILENAME
-//        System.out.print("Please enter input file: ");
-//        Scanner userInput = new Scanner(System.in);
-//        String filename = userInput.nextLine();
-		// File file = new File(filename);
+		// Getting User Input for the Exam File
 
-		File file = new File("src/sample_exam.txt");
+		System.out.print("Enter an exam filename: ");
+		examFileName = scanUserInput.nextLine();
 
-		File outputFile = new File("src/reordered_exam.txt");
-		File outputAnswers = new File("src/output_answers.txt");
+		// Processing Exam File
 
+		while (true) { // Check if the file actually exists.  If not, get a new file input.
+			try {
+				examFile = new File(examFileName); // Opens specified file.
+				scanFile = new Scanner(examFile);
+				break;
 
-		Scanner examScanner = null; //scan through files
-		Scanner ansScanner = null; // scan user input
-		PrintWriter pwExam = null; //write to exam
-		PrintWriter pwAnswers = null; //write to student answers
-
-
-		try {
-			examScanner = new Scanner(file);
-			ansScanner = ScannerFactory.getKeyboardScanner();
-			pwExam = new PrintWriter(outputFile);
-			pwAnswers = new PrintWriter(outputAnswers);
-		}
-		catch(FileNotFoundException e){
-			System.out.println("FILENOTFOUND");
-			e.printStackTrace();
+			} catch(Exception e) { // Likely a "file not found" exception, but catches any just in case.
+				System.out.println("File: " + examFileName);
+				System.out.print("Error: That file does not exist.  Please enter a new filename: ");
+				examFileName = scanUserInput.nextLine();
+			}
 		}
 
-		//Exam exam = new Exam(examScanner);
-		String userName = null;
-		System.out.print("Please enter your name: ");
-		userName = ansScanner.nextLine();
-		Exam exam = new Exam(examScanner);
-		exam.print();
-		//System.out.println(userName);
-		pwAnswers.println(userName);
-		pwAnswers.println();
-//		exam.reorderQuestions();
-//		exam.save(pwExam);
-//		exam.saveStudentAnswers(pwAnswers);
-//
-//
-//		pwExam.close();
-//		pwAnswers.close();
-//		exam = null;
-//
-//
-//		try{
-//			examScanner = new Scanner(outputFile);
-//
-//		}catch(FileNotFoundException e){
-//			System.out.println("FILE NOT FOUND");
-//			e.printStackTrace();
-//
-//		}
-//		exam = new Exam(examScanner);
-//		exam.restoreStudentAnswers(ansScanner);
-//
-//
-//		//fileScanner.close();
-//
-//
-//
-		pwAnswers.close();
-		pwExam.close();
+		return scanFile;
+	}
+	public static PrintWriter getAnsWriter() { // Gets the file used to create an exam.
+		Scanner scn = ScannerFactory.getKeyboardScanner(); // For user input.
+		PrintWriter answersPW; // To save the student answers.
+		String savedAnsFileName = null; // The filename where the student answers will be saved under.
+		System.out.println("\nPlease enter the filename to save the student answers under: ");
+
+		while (true) { // Check if the file actually exists.  If not, get a new file input.
+			try {
+				savedAnsFileName = scn.nextLine();
+				answersPW = new PrintWriter(savedAnsFileName);
+				break;
+
+			} catch(Exception e) { // Likely a "file not found" exception, but catches any just in case.
+				System.out.println("File: " + savedAnsFileName);
+				System.out.println("Error: That file does not exist.  Please enter a new filename: ");
+			}
+		}
+		return answersPW;
+	}
+
+	public static void main(String args[]) {
+		Scanner scn = ScannerFactory.getKeyboardScanner(); // For user input.
+		Scanner examFileScanner; // Scanner containing the exam contents.
+		PrintWriter examPW; // To save the reordered exam.
+
+
+		String savedExamFileName = null; // The filename where the modified exam will be saved under.
+
+
+		File examFile;
+		File ansFile;
+		Scanner savedExamScanner;
+		Scanner savedAnswersScanner;
+
+		Exam currExam; // Current Exam Object
+
+		examFileScanner = getExamFileScanner();
+
+		currExam = new Exam(examFileScanner); // Step 1
+
+
+		System.out.println("\n~~~ Taking the Exam ~~~");
+
+		//get answer from student for all questions if positon = -1
+		currExam.getAnswerFromStudent(-1);  // Step 4
+
+
+
+		PrintWriter answersPW = getAnsWriter();
+		currExam.saveStudentAnswers(answersPW); // Step 5
+
+
+		answersPW.close();
+
+
+		System.out.println("Program will now end.");
+
+		// Closes all the scanners.
+
+
+		ScannerFactory.closeKeyboardScanner();
+
+		return;
 	}
 }
-

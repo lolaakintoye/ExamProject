@@ -69,7 +69,7 @@ public class Exam
 			}				
 		}
 			
-		//System.out.println("\n\n" + numQuestions + " questions has been added to the exam.\n");
+		System.out.println("\n\n" + numQuestions + " questions has been added to the exam.\n");
 	}
 	
 	public void print() {	
@@ -122,7 +122,8 @@ public class Exam
 											// Just gets an answer for a particular question.
 			Question q = questions.get(position);
 			q.getAnswerFromStudent();
-		}		
+		}
+
 	}
 	
 	public double getValue() {		
@@ -171,15 +172,16 @@ public class Exam
 		Date currentDate = new Date();
 		
 		Scanner scn = ScannerFactory.getKeyboardScanner(); // The shared System.in scanner.
-		pw.println(currentDate.toString());
+
 		
-		System.out.print("\nWhat is your name? ");
+		System.out.print("Please enter name: ");
 		pw.println(scn.nextLine());
 		pw.println(title);
+		pw.println(currentDate);
 		
 		for (Question q: questions) {
-			pw.println("");
-			q.saveStudentAnswer(pw);		
+			pw.println();
+			q.saveStudentAnswers(pw);
 		}
 	}
 	

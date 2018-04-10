@@ -48,7 +48,7 @@ public class NumQuestion extends Question {
 		
 		while (true) {
 			try {
-				System.out.print("Enter your answer (numeric values only!): ");
+				System.out.print("Enter your answer (numeric values only!) or SKIP to come back: ");
 				answer = Double.parseDouble(scn.nextLine()); 
 				ansObj = new NumAnswer(answer, tolerance);
 				break;
