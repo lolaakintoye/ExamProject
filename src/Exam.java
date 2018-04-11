@@ -12,10 +12,12 @@ public class Exam
 {
 	private String title; // Title of the exam.
 	protected ArrayList<Question> questions; // Array list to hold Question objects (exam questions).
+	protected ArrayList<Integer> skipArray;
     private int numQuestions; // Total number of questions in an exam.    
 	private double studentScore; // Actual Student Score 
 	private double maxScore; // Total Possible Score
 	private double examScore; // Exam Score
+
 	
 	private String[] questionTypes = new String[] {"mcsaquestion", "mcmaquestion", "saquestion", "numquestion"}; // Array to hold question types.
 	private String fileLine; // The lines of the exam file.
@@ -23,6 +25,7 @@ public class Exam
 	public Exam(String title) {
 		this.title = title;
 		questions = new ArrayList<Question>();
+		skipArray = new ArrayList<Integer>();
 		numQuestions = 0;
 		studentScore = 0.0;
 		maxScore = 0.0;

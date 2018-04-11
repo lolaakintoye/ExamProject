@@ -45,12 +45,16 @@ public class NumQuestion extends Question {
 		double answer; // Answer entered in by user.
 				
 		System.out.println("\n" + question);
-		
+
 		while (true) {
 			try {
 				System.out.print("Enter your answer (numeric values only!) or SKIP to come back: ");
-				answer = Double.parseDouble(scn.nextLine()); 
-				ansObj = new NumAnswer(answer, tolerance);
+				if(scn.nextLine().contains("SKIP")){
+					ansObj = new NumAnswer("SKIP");
+				}else {
+					answer = Double.parseDouble(scn.nextLine());
+					ansObj = new NumAnswer(answer, tolerance);
+				}
 				break;
 			} catch (Exception e) {
 				System.out.println("That is not a number.");

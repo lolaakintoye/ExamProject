@@ -77,6 +77,8 @@ public class ExamTaker
 		//get answer from student for all questions if positon = -1
 		currExam.getAnswerFromStudent(-1);  // Step 4
 
+		//Confirm list of answers
+		System.out.println("Review yours below:");
 
 
 		PrintWriter answersPW = getAnsWriter();
@@ -89,8 +91,6 @@ public class ExamTaker
 		System.out.println("Program will now end.");
 
 		// Closes all the scanners.
-
-
 		ScannerFactory.closeKeyboardScanner();
 
 		return;

@@ -41,9 +41,11 @@ public class SAQuestion extends Question {
 		System.out.println("\n" + question);
 		System.out.print("Enter your answer or SKIP to come back: ");
 		answer = scn.nextLine(); 
-
-		ansObj = new SAAnswer(answer);
-
+		if(answer.contains("SKIP")){
+			ansObj = new SAAnswer("SKIP");
+		}else {
+			ansObj = new SAAnswer(answer);
+		}
 		this.studentAnswer = ansObj;		
 	}
 	
