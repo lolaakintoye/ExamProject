@@ -12,11 +12,12 @@ public class MCMAQuestion extends MCQuestion {
 
 	protected int numStudentAnswers; // Number of student answers added.
 	
-	public MCMAQuestion(String question, double maxValue, double baseCredit) {
-		super(question, maxValue);
+	public MCMAQuestion(String question, double maxValue, double baseCredit, int numAnswers) {
+		super(question, maxValue, numAnswers);
 		
 		numStudentAnswers = 0;
 		
+		this.questionType = "MCMAQuestion";
 		this.baseCredit = baseCredit;
 	}
 	

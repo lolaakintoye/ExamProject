@@ -9,6 +9,8 @@ import java.util.*;
 public class SAQuestion extends Question {	
 	public SAQuestion(String question, double maxValue) {
 		super(question, maxValue);
+		
+		this.questionType = "SAQuestion";
 	}
 	
 	public SAQuestion(Scanner scn) {
