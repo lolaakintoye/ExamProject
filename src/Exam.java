@@ -1,6 +1,6 @@
 /* CS 342: Project 4: Developing Applications Using Exam-Related Classes
- * Name: Daisy Arellano
- * NetID: darell3
+ * Name: Charlotte Norman
+ * NetID: cnorma4
  */
 
 import java.io.*;
