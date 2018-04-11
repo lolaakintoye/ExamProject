@@ -1,16 +1,13 @@
 Lola
-Sample Exam Title
-Wed Apr 11 10:28:50 CDT 2018
+modified_exam
+Wed Apr 11 14:22:41 CDT 2018
 
 SAAnswer
-Info
+sup
 
 MCSAAnswer
-0.5 Peanut butter
+0.0 This
 
 MCMAAnswer
 1
-0.2 Harry Potter
-
-NumAnswer
-5.0
+-2.0 YOSH
