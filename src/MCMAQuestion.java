@@ -17,6 +17,7 @@ public class MCMAQuestion extends MCQuestion {
 		
 		numStudentAnswers = 0;
 		
+		this.questionType = "MCMAQuestion";
 		this.baseCredit = baseCredit;
 	}
 	

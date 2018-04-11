@@ -190,10 +190,6 @@ public class Exam
 		scn.nextLine(); // Gets the student name and discards.
 		scn.nextLine(); // Gets the date information and discards.
 		
-		scn.nextLine(); // scan title and discards
-		
-		//scn.nextLine(); // scan title and discards
-		
 		for (Question q: questions) {
 			//System.out.println(q);
 			scn.nextLine();

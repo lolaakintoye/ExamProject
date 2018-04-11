@@ -12,6 +12,8 @@ public class NumQuestion extends Question {
 	public NumQuestion(String question, double maxValue, double tolerance) {
 		super(question, maxValue);
 		
+		this.questionType = "NumQuestion";
+		
 		this.tolerance = tolerance;
 	}
 	
@@ -46,7 +48,7 @@ public class NumQuestion extends Question {
 		String value; // Value to signal where a question should be skipped or not.
 		
 		System.out.println("\n" + question);
-		String value;
+
 		while (true) {
 			try {
 				System.out.print("Enter your answer (numeric values only!) or SKIP to come back to: ");	

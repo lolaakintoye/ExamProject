@@ -9,6 +9,8 @@ import java.util.*;
 public class MCSAQuestion extends MCQuestion {
 	public MCSAQuestion(String question, double maxValue) {
 		super(question, maxValue);
+		
+		this.questionType = "MCSAQuestion";
 	}
 	
 	public MCSAQuestion(Scanner scn) {
