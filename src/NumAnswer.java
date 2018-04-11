@@ -8,20 +8,21 @@ import java.util.*;
 
 public class NumAnswer extends Answer {
 	protected double answer; // Numerical answer.
-	//protected double tolerance; // Allows for the student answer to be in an acceptable range in order to be correct.
+	protected String skip;
 	
 	public NumAnswer(double answer) {
 		this.answer = answer;
 	}
+	public NumAnswer(String answer){
+		this.skip = answer;
+	}
 	
 	public NumAnswer(double answer, double tolerance) {
 		this.answer = answer;
-		//this.tolerance = tolerance;
 	}
 	
 	public NumAnswer(Scanner scn) {
 		answer = Double.parseDouble(scn.nextLine());		
-		//tolerance = Double.parseDouble(scn.nextLine());
 	}
 	
 	public void print() {

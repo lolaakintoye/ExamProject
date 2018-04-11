@@ -6,16 +6,18 @@
 import java.io.*;
 import java.util.*;
 import java.text.*;
-import java.time.*;
+//import java.time.*;
 
 public class Exam
 {
 	private String title; // Title of the exam.
 	protected ArrayList<Question> questions; // Array list to hold Question objects (exam questions).
+	protected ArrayList<Integer> skipArray;
     private int numQuestions; // Total number of questions in an exam.    
 	private double studentScore; // Actual Student Score 
 	private double maxScore; // Total Possible Score
 	private double examScore; // Exam Score
+
 	
 	private String[] questionTypes = new String[] {"mcsaquestion", "mcmaquestion", "saquestion", "numquestion"}; // Array to hold question types.
 	private String fileLine; // The lines of the exam file.
@@ -23,6 +25,7 @@ public class Exam
 	public Exam(String title) {
 		this.title = title;
 		questions = new ArrayList<Question>();
+		skipArray = new ArrayList<Integer>();
 		numQuestions = 0;
 		studentScore = 0.0;
 		maxScore = 0.0;
@@ -39,6 +42,7 @@ public class Exam
 		// Reading in Exam Information
 		
 		title = scn.nextLine(); // Gets exam title from scanner.
+		scn.nextLine(); // Discards date information.
 		
 		while (scn.hasNextLine()) { // Reads until EOF.			
 			fileLine = scn.nextLine();
@@ -69,7 +73,7 @@ public class Exam
 			}				
 		}
 			
-		System.out.println("\n\n" + numQuestions + " questions has been added to the exam.\n");	
+		System.out.println("\n\n" + numQuestions + " questions has been added to the exam.\n");
 	}
 	
 	public void print() {	
@@ -122,7 +126,8 @@ public class Exam
 											// Just gets an answer for a particular question.
 			Question q = questions.get(position);
 			q.getAnswerFromStudent();
-		}		
+		}
+
 	}
 	
 	public double getValue() {		
@@ -168,27 +173,40 @@ public class Exam
 	}
 	
 	public void saveStudentAnswers(PrintWriter pw) {
+		Scanner scn = ScannerFactory.getKeyboardScanner(); // The shared System.in scanner.	
 		Date currentDate = new Date();
 		
-		Scanner scn = ScannerFactory.getKeyboardScanner(); // The shared System.in scanner.
+		System.out.print("Please enter name: ");
+		pw.println(scn.nextLine());
+		
+		pw.println(title);
 		pw.println(currentDate.toString());
 		
-		System.out.print("\nWhat is your name? ");
-		pw.println(scn.nextLine());
-		pw.println(title);
-		
 		for (Question q: questions) {
-			pw.println("");
-			q.saveStudentAnswer(pw);		
+			pw.println();
+			q.saveStudentAnswers(pw);
 		}
 	}
 	
 	public void restoreStudentAnswers(Scanner scn) {
 		scn.nextLine(); // Gets the student name and discards.
+		scn.nextLine(); // Gets the date information and discards.
 		
 		for (Question q: questions) {
 			scn.nextLine();
 			q.restoreStudentAnswer(scn);
+		}
+	}
+	
+	public int numQuestions() {
+		return numQuestions;
+	}
+	
+	public void saveQuestionValue(PrintWriter pw) { // Saving question values to a CSV.
+		int i = 0;
+		
+		for (i = 0; i < questions.size(); i++) {
+			pw.print("," + questions.get(i).getValue());
 		}
 	}
 }

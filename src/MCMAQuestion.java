@@ -68,10 +68,19 @@ public class MCMAQuestion extends MCQuestion {
 		print(); // Prints the question and multiple choice answers.
 		
 		System.out.print("Enter your answer choice(s): ");
-		
+
 		ansChoices = scn.nextLine().toUpperCase().replaceAll("\\s", ""); // Gets rid of all whitespace before parsing the answers into the array.
-		ansChoicesArr = ansChoices.toCharArray();
 		
+		if (ansChoices.contains("SKIP")){
+			ansObj = new MCMAAnswer("SKIP", 0);
+			studentAnswers.add(ansObj);
+			this.skipped = true;
+			numStudentAnswers++;
+			return;
+		}
+		
+		ansChoicesArr = ansChoices.toCharArray();
+
 		while (ansChoicesArr.length < 1 || ansChoicesArr.length > numAnswers) { // Error checking if the selected answers fall out of bounds with the amount of answers provided.
 			System.out.print("Error: Please enter your answer choice(s) separated by a space: ");
 			ansChoices = scn.nextLine().toUpperCase().replaceAll("\\s", "");
@@ -81,12 +90,12 @@ public class MCMAQuestion extends MCQuestion {
 		for (int i = 0; i < ansChoicesArr.length; i++) {
 			ansChoice = ansChoicesArr[i];
 			ansPosition = ansChoice - 'A'; // This will convert that char into an int that will be used to look up the answer object in the array.
-			
+
 			if (ansPosition >= 0 && ansPosition < numAnswers) { // Makes sure the answer choices are in bounds.
 				ansObj = (MCMAAnswer)answers.get(ansPosition); // Gets the corresponding answer object from array.
 				studentAnswers.add(ansObj); 
 				numStudentAnswers++;
-			}	
+			}
 		}	
 	}
 	
@@ -117,7 +126,7 @@ public class MCMAQuestion extends MCQuestion {
 		pw.println("MCMAAnswer");
 		
 		pw.println(numStudentAnswers);
-		
+
 		for (MCMAAnswer a: studentAnswers) {
 			a.save(pw);	
 		}

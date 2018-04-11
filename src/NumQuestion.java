@@ -43,14 +43,24 @@ public class NumQuestion extends Question {
 		
 		NumAnswer ansObj; // "Numerical Answer" Answer Object
 		double answer; // Answer entered in by user.
-				
+		String value; // Value to signal where a question should be skipped or not.
+		
 		System.out.println("\n" + question);
 		
 		while (true) {
 			try {
-				System.out.print("Enter your answer (numeric values only!): ");
-				answer = Double.parseDouble(scn.nextLine()); 
-				ansObj = new NumAnswer(answer, tolerance);
+				System.out.print("Enter your answer (numeric values only!) or SKIP to come back to: ");	
+				value = scn.nextLine();
+				
+				if (value.contains("SKIP")){
+					this.skipped = true;
+					ansObj = new NumAnswer("SKIP");
+				}
+				else {
+					answer = Double.parseDouble(value);
+					ansObj = new NumAnswer(answer, tolerance);
+				}
+				
 				break;
 			} catch (Exception e) {
 				System.out.println("That is not a number.");
