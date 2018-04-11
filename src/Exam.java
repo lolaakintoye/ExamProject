@@ -6,7 +6,7 @@
 import java.io.*;
 import java.util.*;
 import java.text.*;
-import java.time.*;
+//import java.time.*;
 
 public class Exam
 {
@@ -191,9 +191,27 @@ public class Exam
 	public void restoreStudentAnswers(Scanner scn) {
 		scn.nextLine(); // Gets the student name and discards.
 		
+		scn.nextLine(); // scan title and discards
+		
+		//scn.nextLine(); // scan title and discards
+		
 		for (Question q: questions) {
+			//System.out.println(q);
 			scn.nextLine();
 			q.restoreStudentAnswer(scn);
 		}
+	}
+	
+	public int numQuestions() {
+		return numQuestions;
+	}
+	
+	public void saveQuestionValue(PrintWriter pw) {
+		int i = 0;
+		
+		for (i = 0; i < questions.size(); i++) {
+			pw.print("," + questions.get(i).getValue() );
+		}
+		//pw.print(questions.get(questions.size()).getValue());
 	}
 }
