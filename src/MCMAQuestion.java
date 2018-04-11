@@ -70,14 +70,15 @@ public class MCMAQuestion extends MCQuestion {
 		System.out.print("Enter your answer choice(s): ");
 
 		ansChoices = scn.nextLine().toUpperCase().replaceAll("\\s", ""); // Gets rid of all whitespace before parsing the answers into the array.
-		if(ansChoices.contains("SKIP")){
+		
+		if (ansChoices.contains("SKIP")) {
 			ansObj = new MCMAAnswer("SKIP", 0);
 			studentAnswers.add(ansObj);
 			this.skipped = true;
 			numStudentAnswers++;
 			return;
-
 		}
+
 		ansChoicesArr = ansChoices.toCharArray();
 
 		while (ansChoicesArr.length < 1 || ansChoicesArr.length > numAnswers) { // Error checking if the selected answers fall out of bounds with the amount of answers provided.
@@ -95,7 +96,6 @@ public class MCMAQuestion extends MCQuestion {
 				studentAnswers.add(ansObj); 
 				numStudentAnswers++;
 			}
-
 		}	
 	}
 	
