@@ -36,7 +36,7 @@ public class MCSAQuestion extends MCQuestion {
 	
 	public void getAnswerFromStudent() {
 		Scanner scn = ScannerFactory.getKeyboardScanner();
-		
+		String ansChoices;
 		MCSAAnswer ansObj; // "Multiple Choice Single Answer" Answer Object
 		char ansChoice; // The multiple choice letter selected by the user.
 		int ansPosition; // The position of the answer in the array that the student selected.
@@ -45,13 +45,22 @@ public class MCSAQuestion extends MCQuestion {
 		
 		print(); // Prints the question and multiple choice answers.
 		
-		System.out.print("Enter your answer choice: ");
-		ansChoice = scn.nextLine().toUpperCase().charAt(0); // Just gets the first single character (as a char) entered.  This is the multiple choice answer choice e.g. A - E, etc.
+		System.out.print("Enter your answer choice or SKIP to come back: ");
+
+		ansChoices = scn.nextLine().toUpperCase(); // This is the multiple choice answer choice e.g. A - E, etc.
+		if(ansChoices.contains("SKIP")) {
+			this.skipped = true;
+			ansObj = new MCSAAnswer("SKIP", 0);
+
+			this.studentAnswer = ansObj;
+			return;
+		}
+		ansChoice = ansChoices.charAt(0);
+
 		ansPosition = ansChoice - 'A'; // This will convert that char into an int that will be used to look up the answer object in the array.
-		
-		ansObj = (MCSAAnswer)answers.get(ansPosition); // Gets the corresponding answer object from array.
-		
-		this.studentAnswer = ansObj;		
+
+		ansObj = (MCSAAnswer) answers.get(ansPosition); // Gets the corresponding answer object from array.
+		this.studentAnswer = ansObj;
 	}
 	
 	public double getValue() {

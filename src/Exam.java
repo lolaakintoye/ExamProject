@@ -12,10 +12,12 @@ public class Exam
 {
 	private String title; // Title of the exam.
 	protected ArrayList<Question> questions; // Array list to hold Question objects (exam questions).
+	protected ArrayList<Integer> skipArray;
     private int numQuestions; // Total number of questions in an exam.    
 	private double studentScore; // Actual Student Score 
 	private double maxScore; // Total Possible Score
 	private double examScore; // Exam Score
+
 	
 	private String[] questionTypes = new String[] {"mcsaquestion", "mcmaquestion", "saquestion", "numquestion"}; // Array to hold question types.
 	private String fileLine; // The lines of the exam file.
@@ -23,6 +25,7 @@ public class Exam
 	public Exam(String title) {
 		this.title = title;
 		questions = new ArrayList<Question>();
+		skipArray = new ArrayList<Integer>();
 		numQuestions = 0;
 		studentScore = 0.0;
 		maxScore = 0.0;
@@ -69,7 +72,7 @@ public class Exam
 			}				
 		}
 			
-		System.out.println("\n\n" + numQuestions + " questions has been added to the exam.\n");	
+		System.out.println("\n\n" + numQuestions + " questions has been added to the exam.\n");
 	}
 	
 	public void print() {	
@@ -122,7 +125,8 @@ public class Exam
 											// Just gets an answer for a particular question.
 			Question q = questions.get(position);
 			q.getAnswerFromStudent();
-		}		
+		}
+
 	}
 	
 	public double getValue() {		
@@ -171,15 +175,16 @@ public class Exam
 		Date currentDate = new Date();
 		
 		Scanner scn = ScannerFactory.getKeyboardScanner(); // The shared System.in scanner.
-		pw.println(currentDate.toString());
+
 		
-		System.out.print("\nWhat is your name? ");
+		System.out.print("Please enter name: ");
 		pw.println(scn.nextLine());
 		pw.println(title);
+		pw.println(currentDate);
 		
 		for (Question q: questions) {
-			pw.println("");
-			q.saveStudentAnswer(pw);		
+			pw.println();
+			q.saveStudentAnswers(pw);
 		}
 	}
 	

@@ -32,18 +32,21 @@ public class SAQuestion extends Question {
 		return ansObj;
 	}
 	
-	public void getAnswerFromStudent() { 
+	public void getAnswerFromStudent() {
 		Scanner scn = ScannerFactory.getKeyboardScanner(); // The shared System.in scanner.
 		
 		SAAnswer ansObj; // "Multiple Choice Single Answer" Answer Object
 		String answer; // Answer entered in by user.
 		
 		System.out.println("\n" + question);
-		System.out.print("Enter your answer: ");		
+		System.out.print("Enter your answer or SKIP to come back: ");
 		answer = scn.nextLine(); 
-		
-		ansObj = new SAAnswer(answer);
-		
+		if(answer.contains("SKIP")){
+			this.skipped = true;
+			ansObj = new SAAnswer("SKIP");
+		}else {
+			ansObj = new SAAnswer(answer);
+		}
 		this.studentAnswer = ansObj;		
 	}
 	
