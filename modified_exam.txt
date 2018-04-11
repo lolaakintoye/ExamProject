@@ -1,0 +1,22 @@
+Exam
+Wed Apr 11 13:15:44 CDT 2018
+
+MCSAQuestion
+5.0
+What is this?
+0
+5.0 That
+0.0 This
+
+MCMAQuestion
+10.0
+Yo
+2.0
+0
+-2.0 YOSH
+8.0 YOP
+
+SAQuestion
+5.0
+Hello?
+Hi.
