@@ -54,8 +54,6 @@ public class ExamTaker
 	public static void main(String args[]) {
 		Scanner scn = ScannerFactory.getKeyboardScanner(); // For user input.
 		Scanner examFileScanner; // Scanner containing the exam contents.
-		PrintWriter examPW; // To save the reordered exam.
-
 
 		String savedExamFileName = null; // The filename where the modified exam will be saved under.
 
@@ -76,17 +74,34 @@ public class ExamTaker
 
 		//get answer from student for all questions if positon = -1
 		currExam.getAnswerFromStudent(-1);  // Step 4
-
-		//Confirm list of answers
-		System.out.println("Review yours below:");
-
+		for(Question q: currExam.questions){
+			if(q.skipped == true){
+				q.getAnswerFromStudent();
+			}
+		}
+		ArrayList<Integer> changeList = new ArrayList<Integer>();
 
 		PrintWriter answersPW = getAnsWriter();
-		currExam.saveStudentAnswers(answersPW); // Step 5
+		
+		String changeInput;
+		String qNum;
+		System.out.println("Do you want to reanswer a question? (Y/N)");
+		changeInput = scn.nextLine();
+		if(changeInput.contains("Y")){
+			System.out.println("\nEnter the question numbers (End with '#'): ");
+			qNum = scn.nextLine();
+			while(!(qNum).contains("#")){
+				changeList.add(Integer.parseInt(qNum));
+				qNum = scn.nextLine();
+			}
 
+			for(int i: changeList){
+				currExam.getAnswerFromStudent(i-1);
+			}
 
+		}
+		currExam.saveStudentAnswers(answersPW);
 		answersPW.close();
-
 
 		System.out.println("Program will now end.");
 

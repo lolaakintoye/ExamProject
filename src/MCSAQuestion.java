@@ -48,16 +48,19 @@ public class MCSAQuestion extends MCQuestion {
 		System.out.print("Enter your answer choice or SKIP to come back: ");
 
 		ansChoices = scn.nextLine().toUpperCase(); // This is the multiple choice answer choice e.g. A - E, etc.
-		if(ansChoices.contains("SKIP")){
-			ansObj = new MCSAAnswer("SKIP",0);
-		}else {
-			ansChoice = ansChoices.charAt(0);
+		if(ansChoices.contains("SKIP")) {
+			this.skipped = true;
+			ansObj = new MCSAAnswer("SKIP", 0);
 
-			ansPosition = ansChoice - 'A'; // This will convert that char into an int that will be used to look up the answer object in the array.
-
-			ansObj = (MCSAAnswer) answers.get(ansPosition); // Gets the corresponding answer object from array.
+			this.studentAnswer = ansObj;
+			return;
 		}
-		this.studentAnswer = ansObj;		
+		ansChoice = ansChoices.charAt(0);
+
+		ansPosition = ansChoice - 'A'; // This will convert that char into an int that will be used to look up the answer object in the array.
+
+		ansObj = (MCSAAnswer) answers.get(ansPosition); // Gets the corresponding answer object from array.
+		this.studentAnswer = ansObj;
 	}
 	
 	public double getValue() {

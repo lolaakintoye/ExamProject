@@ -42,6 +42,7 @@ public class SAQuestion extends Question {
 		System.out.print("Enter your answer or SKIP to come back: ");
 		answer = scn.nextLine(); 
 		if(answer.contains("SKIP")){
+			this.skipped = true;
 			ansObj = new SAAnswer("SKIP");
 		}else {
 			ansObj = new SAAnswer(answer);

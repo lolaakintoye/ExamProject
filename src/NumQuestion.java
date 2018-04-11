@@ -45,14 +45,16 @@ public class NumQuestion extends Question {
 		double answer; // Answer entered in by user.
 				
 		System.out.println("\n" + question);
-
+		String value;
 		while (true) {
 			try {
 				System.out.print("Enter your answer (numeric values only!) or SKIP to come back: ");
-				if(scn.nextLine().contains("SKIP")){
+				value = scn.nextLine();
+				if(value.contains("SKIP")){
+					this.skipped = true;
 					ansObj = new NumAnswer("SKIP");
 				}else {
-					answer = Double.parseDouble(scn.nextLine());
+					answer = Double.parseDouble(value);
 					ansObj = new NumAnswer(answer, tolerance);
 				}
 				break;

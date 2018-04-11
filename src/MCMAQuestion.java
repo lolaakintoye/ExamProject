@@ -73,6 +73,7 @@ public class MCMAQuestion extends MCQuestion {
 		if(ansChoices.contains("SKIP")){
 			ansObj = new MCMAAnswer("SKIP", 0);
 			studentAnswers.add(ansObj);
+			this.skipped = true;
 			numStudentAnswers++;
 			return;
 
@@ -125,7 +126,7 @@ public class MCMAQuestion extends MCQuestion {
 		pw.println("MCMAAnswer");
 		
 		pw.println(numStudentAnswers);
-		
+
 		for (MCMAAnswer a: studentAnswers) {
 			a.save(pw);	
 		}

@@ -12,17 +12,20 @@ abstract class Question
 	protected double maxValue; // Max Question Score
 	protected Answer studentAnswer; // Answer object holding the student answer.
 	protected Answer rightAnswer; // Answer object holding the correct answer.
+	protected boolean skipped;// = true;
 	
 	protected String questionType; // Used for printing on whether a question is SAQuestion, NumQuestion, MCSAQuestion, or a MCMAQuestion.
 	
 	protected Question(String question, double maxValue) {	
 		this.maxValue = maxValue;
 		this.question = question;
+		this.skipped = false;
 	}
 	
 	public Question(Scanner scn) {
 		maxValue = Double.parseDouble(scn.nextLine());
-		question = scn.nextLine(); 
+		question = scn.nextLine();
+		this.skipped = false;
 	}
 	
 	public void print() {
