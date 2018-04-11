@@ -1,5 +1,5 @@
 /* CS 342: Project 3: Saving and Restoring Exam and Exam Components
- * Name: Charlotte Norman
+ * Name: Daisy Arellano
  * NetID: cnorma4
  */
 
