@@ -13,7 +13,6 @@ abstract class Question
 	protected Answer studentAnswer; // Answer object holding the student answer.
 	protected Answer rightAnswer; // Answer object holding the correct answer.
 	protected boolean skipped; // Used to note which questions have been skipped.
-	
 	protected String questionType; // Used for printing on whether a question is SAQuestion, NumQuestion, MCSAQuestion, or a MCMAQuestion.
 	
 	protected Question(String question, double maxValue) {	

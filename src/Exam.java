@@ -6,7 +6,6 @@
 import java.io.*;
 import java.util.*;
 import java.text.*;
-//import java.time.*;
 
 public class Exam
 {
@@ -175,13 +174,12 @@ public class Exam
 	public void saveStudentAnswers(PrintWriter pw) {
 		Scanner scn = ScannerFactory.getKeyboardScanner(); // The shared System.in scanner.	
 		Date currentDate = new Date();
-		
+  
 		System.out.print("Please enter name: ");
-		pw.println(scn.nextLine());
-		
+		pw.println(scn.nextLine());	
 		pw.println(title);
 		pw.println(currentDate.toString());
-		
+  
 		for (Question q: questions) {
 			pw.println();
 			q.saveStudentAnswers(pw);
@@ -192,7 +190,12 @@ public class Exam
 		scn.nextLine(); // Gets the student name and discards.
 		scn.nextLine(); // Gets the date information and discards.
 		
+		scn.nextLine(); // scan title and discards
+		
+		//scn.nextLine(); // scan title and discards
+		
 		for (Question q: questions) {
+			//System.out.println(q);
 			scn.nextLine();
 			q.restoreStudentAnswer(scn);
 		}
@@ -201,7 +204,7 @@ public class Exam
 	public int numQuestions() {
 		return numQuestions;
 	}
-	
+
 	public void saveQuestionValue(PrintWriter pw) { // Saving question values to a CSV.
 		int i = 0;
 		

@@ -49,13 +49,13 @@ public class MCSAQuestion extends MCQuestion {
 
 		ansChoices = scn.nextLine().toUpperCase(); // This is the multiple choice answer choice e.g. A - E, etc.
 		
-		if(ansChoices.contains("SKIP")) {
+		if (ansChoices.contains("SKIP")) {
 			this.skipped = true;
 			ansObj = new MCSAAnswer("SKIP", 0);
 			this.studentAnswer = ansObj;
 			return;
 		}
-		
+    
 		ansChoice = ansChoices.charAt(0);
 
 		ansPosition = ansChoice - 'A'; // This will convert that char into an int that will be used to look up the answer object in the array.

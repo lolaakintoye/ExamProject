@@ -13,10 +13,11 @@ public class NumAnswer extends Answer {
 	public NumAnswer(double answer) {
 		this.answer = answer;
 	}
+  
 	public NumAnswer(String answer){
 		this.skip = answer;
-	}
-	
+  }
+  
 	public NumAnswer(double answer, double tolerance) {
 		this.answer = answer;
 	}

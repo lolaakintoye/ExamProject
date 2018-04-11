@@ -46,7 +46,7 @@ public class NumQuestion extends Question {
 		String value; // Value to signal where a question should be skipped or not.
 		
 		System.out.println("\n" + question);
-		
+		String value;
 		while (true) {
 			try {
 				System.out.print("Enter your answer (numeric values only!) or SKIP to come back to: ");	
@@ -60,7 +60,7 @@ public class NumQuestion extends Question {
 					answer = Double.parseDouble(value);
 					ansObj = new NumAnswer(answer, tolerance);
 				}
-				
+
 				break;
 			} catch (Exception e) {
 				System.out.println("That is not a number.");
