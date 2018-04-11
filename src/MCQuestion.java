@@ -11,11 +11,11 @@ abstract class MCQuestion extends Question {
 	
 	protected int numAnswers; // Number of answers in question.
 	
-	public MCQuestion(String question, double maxValue) {
+	public MCQuestion(String question, double maxValue, int numAnswers) {
 		super(question, maxValue);
 		
-		answers = new ArrayList<MCAnswer>();
-		numAnswers = 0;		
+		this.numAnswers = numAnswers;
+		answers = new ArrayList<MCAnswer>();				
 	}
 	
 	public MCQuestion(Scanner scn) {

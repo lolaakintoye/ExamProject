@@ -16,7 +16,6 @@ public class Exam
 	private double studentScore; // Actual Student Score 
 	private double maxScore; // Total Possible Score
 	private double examScore; // Exam Score
-
 	
 	private String[] questionTypes = new String[] {"mcsaquestion", "mcmaquestion", "saquestion", "numquestion"}; // Array to hold question types.
 	private String fileLine; // The lines of the exam file.
@@ -126,7 +125,6 @@ public class Exam
 			Question q = questions.get(position);
 			q.getAnswerFromStudent();
 		}
-
 	}
 	
 	public double getValue() {		
@@ -191,7 +189,6 @@ public class Exam
 		scn.nextLine(); // Gets the date information and discards.
 		
 		for (Question q: questions) {
-			//System.out.println(q);
 			scn.nextLine();
 			q.restoreStudentAnswer(scn);
 		}

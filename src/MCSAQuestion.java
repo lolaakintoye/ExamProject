@@ -7,8 +7,8 @@ import java.io.*;
 import java.util.*;
 
 public class MCSAQuestion extends MCQuestion {
-	public MCSAQuestion(String question, double maxValue) {
-		super(question, maxValue);
+	public MCSAQuestion(String question, double maxValue, int numAnswers) {
+		super(question, maxValue, numAnswers);
 		
 		this.questionType = "MCSAQuestion";
 	}

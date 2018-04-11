@@ -132,7 +132,7 @@ public class ExamBuilder
 					System.out.println("\nPlease enter the total number of answers for this question: ");
 					numAnswers = Integer.parseInt(scn.nextLine());
 					
-					MCSAQuestion mcsaQues = new MCSAQuestion(question, maxValue);
+					MCSAQuestion mcsaQues = new MCSAQuestion(question, maxValue, numAnswers);
 					MCSAAnswer mcsaAns; 
 					
 					for (int i = 0; i < numAnswers; i++) {
@@ -166,7 +166,7 @@ public class ExamBuilder
 					System.out.println("\nPlease enter the total number of answers for this question: ");
 					numAnswers = Integer.parseInt(scn.nextLine());
 					
-					MCMAQuestion mcmaQues = new MCMAQuestion(question, maxValue, baseCredit);
+					MCMAQuestion mcmaQues = new MCMAQuestion(question, maxValue, baseCredit, numAnswers);
 					MCMAAnswer mcmaAns;
 					
 					for (int i = 0; i < numAnswers; i++) {
@@ -291,14 +291,16 @@ public class ExamBuilder
 		return currExam;
 	}
 	
-	private static void reorderExam(Exam currExam) {
+	private static Exam reorderExam(Exam currExam) {
 		if (currExam == null) {
 			System.out.println("\nThere is no exam available, please load a exam first.");
-			return;
+			return currExam;
 		}
 		
 		currExam.reorderQuestions();
 		currExam.reorderMCQuestions(-1); 
+		
+		return currExam;
 	}
 	
 	private static void printExam(Exam currExam) {
@@ -356,7 +358,7 @@ public class ExamBuilder
 					currExam = removeQuestionsIA(currExam);
 					break;
 				case 'd':
-					reorderExam(currExam);
+					currExam = reorderExam(currExam);
 					break;
 				case 'e':
 					printExam(currExam);
