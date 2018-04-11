@@ -1,0 +1,16 @@
+Lola
+Sample Exam Title
+Wed Apr 11 10:28:50 CDT 2018
+
+SAAnswer
+Info
+
+MCSAAnswer
+0.5 Peanut butter
+
+MCMAAnswer
+1
+0.2 Harry Potter
+
+NumAnswer
+5.0
