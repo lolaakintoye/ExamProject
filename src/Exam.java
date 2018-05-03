@@ -85,6 +85,18 @@ public class Exam
 			i++; // To get the questions' positions in their current order.
 		}
 	}
+	public void guiPrint(JPanel panel, JTextArea textArea){
+		int i = 1;
+		textArea.append(title + "\n");
+		textArea.append("\n");
+		for(Question q: questions){
+			textArea.append(i + ". ");
+			q.guiPrint(panel, textArea);
+			i++;
+
+		}
+		//panel.add(textArea)
+	}
 	
 	public void addQuestion(Question quesObj) {
 		questions.add(quesObj);
