@@ -210,10 +210,12 @@ public class Exam
 		return numQuestions;
 	}
 
-	public void saveQuestionValue(PrintWriter pw) { // Saving question values to a CSV.
+	
+	public void saveQuestionValue(PrintWriter pw, ArrayList<String> arr) { // Saving question values to a CSV and table
 		int i = 0;
-		
+
 		for (i = 0; i < questions.size(); i++) {
+			arr.add(Double.toString(questions.get(i).getValue()));
 			pw.print("," + questions.get(i).getValue());
 		}
 	}
