@@ -31,6 +31,11 @@ abstract class Question
 		System.out.println(question); // Prints Question
 		System.out.println("\n");
 	}
+		public void guiPrint(JPanel panel,JTextArea textArea){
+
+		textArea.append(question+ "\n");
+
+	}
 	
 	public void setRightAnswer(Answer ansObj) {
 		rightAnswer = ansObj;
